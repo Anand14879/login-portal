@@ -3,7 +3,8 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset("js/style1.css") }}">
+  
 </head>
 <body>
     <div class="container mt-5">
@@ -22,14 +23,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" @if(isset($_COOKIE["password"])) value ="{{ $_COOKIE["password"] }}" @endif required>
+                                <input type="password" class="form-control" id="password" name="password" @if(isset($_COOKIE["password"])) value ="{{ $_COOKIE["password"] }}" @endif required>
+                                
                             </div>
                             <div class="form-group">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                                    <label class="form-check-label" for="remember">Remember Me</label>
+                                <div class="form-check" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                        <label class="form-check-label" for="remember">Remember</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" id="showPassword" onclick="myFunction()">
+                                        <label class="form-check-label" for="showPassword">Show Password</label>
+                                    </div>
                                 </div>
                             </div>
+                            
+                            
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                             
                             
@@ -50,5 +60,9 @@
             </div>
         </div>
     </div>
+
+
+    <script src="{{  asset('js/script1.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
