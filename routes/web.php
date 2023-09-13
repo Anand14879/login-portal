@@ -31,7 +31,7 @@ Route::any("auth/google/callback",[GoogleController::class,'callback'])->name('c
 Route::middleware(['auth'])->group(function () {
 Route::get('/home', [AuthController::class, 'home'])->name('home');
 Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
-Route::get('/product',[ProductController::class, 'product'])->name('products');
+Route::get('/product',[ProductController::class, 'index'])->name('products');
 });
 
 
