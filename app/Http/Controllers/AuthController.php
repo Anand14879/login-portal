@@ -12,12 +12,25 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
+        $data = $request->all();
+        dd($data);
         $users = $request->only('email', 'password'); 
 
         if(Auth::attempt($users)){
             return redirect('home');
         }
         return back()->withErrors(['email'=>'Invalid Credentials']);
+
+        //Remember user email and password with cookies
+        if(isset($data['remember'])&&!empty($data('remember'))){
+            setcookie('email',$data('email'),time+3600);
+            setcookie('password',$data('password'),time+3600);
+
+        }
+        else{
+            setcookie('email',"");
+            setcookie('password',"");
+        }
     }
 
     public function home(){
